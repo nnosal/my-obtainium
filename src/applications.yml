@@ -1,0 +1,22 @@
+apps:
+# Nouvelle application à ajouter
+- id: "com.example.newapp"
+  url: "https://github.com/example/newapp"
+  author: "Example"
+  name: "New App"
+  preferredApkIndex: 0
+  additionalSettings: "{\"about\":\"Description de l'application\"}"
+  categories:
+  - "_ 🟢 Must Have !"
+  meta:
+    nameOverride: "Nom Affiché"
+    urlOverride: "https://example.com"
+    excludeFromExport: true
+    excludeFromTable: true
+
+# Override d'une application existante
+- id: "dev.imranr.obtainium"
+  meta:
+    nameOverride: "Obtainium"
+    excludeFromExport: false
+    excludeFromTable: false

@@ -1,0 +1,28 @@
+name: Mise CI
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - uses: jdx/mise-action@v2
+      with:
+        version: 2025.1.5
+        experimental: true
+    - name: Generate table and markdown
+      run: mise x uv -- uv run make_table.py
+    #- name: Install system dependencies (if needed)
+    #  run: sudo apt-get update && sudo apt-get install -y curl tar gzip
+    #- name: Install Mise
+    #  script: |
+    #    curl https://mise.run | MISE_VERSION=v2024.11.8 sh
+    #    mise install
+    #- name: Generate table and markdown
+    #  script: mise x uv -- uv run make_table.py

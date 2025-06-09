@@ -1,0 +1,15 @@
+[tasks.generate]
+description = "Update table and markdown"
+tools.uv = "latest"
+raw = true
+run = '''
+uv run make_table.py
+'''
+
+[tasks.publish]
+description = "Force commit update while test are not finished"
+env = { MISE_EXPERIMENTAL = '1' }
+run = 'mise r generate &&  git add . && git commit --amend -m "init" && git push --force'
+
+[tools]
+gh = "latest"
